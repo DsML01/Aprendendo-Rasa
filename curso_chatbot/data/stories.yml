@@ -1,0 +1,29 @@
+version: "3.1"
+
+stories:
+
+# - story: inicio da conversa
+#   steps:
+#   - intent: saudacao
+#   - action: utter_saudacao
+#   - intent: agendamento_consulta
+#   - action: utter_agendamento_consulta
+#   - checkpoint: fim_inicio_conversa
+
+# - story: agendamento de consultas com slots de especialidade
+#   steps:
+#   - checkpoint: fim_inicio_conversa
+  
+
+- story: Agendamento de Consultas.
+  steps:
+  - intent: saudacao
+  - action: utter_saudacao
+  - intent: agendamento_consulta
+  - action: utter_agendamento_consulta
+  - intent: agendamento_especialidade
+  - action: utter_agendamento_especialidade
+  - intent: agendamento_data_hora
+  - action: utter_agendamento_data_hora
+  - intent: finalizacao
+  - action: utter_finalizacao 

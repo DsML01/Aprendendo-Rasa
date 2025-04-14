@@ -1,0 +1,100 @@
+version: "3.1"
+
+nlu:
+- lookup: dia_semana
+  examples: |
+    - Segunda
+    - Terça
+    - Quarta
+    - Quinta
+    - Sexta
+    - Segunda-feira
+    - Terça-feira
+    - Quarta-feira
+    - Quinta-feira
+    - Sexta-feira
+
+- lookup: periodo_consulta
+  examples: |
+    - manhã
+    - tarde
+
+- regex: data_hora
+  examples: |
+    - \d{2}/\d{2}
+    - \d{2}/\d{2}/\d{2,4}
+    - \d{2}.\d{2}
+    - \d{2}.\d{2}.\d{2,4}
+    - \d{2} do \d{2}
+    - \d{2} do \d{2} de \d{2,4}    
+
+- intent: saudacao
+  examples: |
+    - oi
+    - oie
+    - boa tarde
+    - bom dia
+    - olá
+    - boa noite
+    - oi, tudo bem?
+    - opa, tudo bem?
+    - olá, como vai?
+
+- intent: agendamento_consulta
+  examples: |
+    - eu gostaria de agendar uma consulta
+    - preciso agendar uma consulta.
+    - estou interessado em agendar uma consulta.
+    - gostaria de marcar um horário para uma consulta
+    - gostaria de agendar uma consulta médica
+    - como posso agendar uma consulta?
+    - quero agendar uma consulta.
+    - gostaria de reservar um horário para uma consulta.
+    - preciso marcar uma consulta. Como posso proceder?
+
+- intent: agendamento_especialidade
+  examples: |
+    - Gostaria de uma consulta com um [urologista](especialidade)
+    - Preciso agendar um horário com um profissional da área de [cardiologista](especialidade)
+    - Preciso agendar uma consulta com um [endocrino](especialidade).
+    - Quero marcar um horário para uma consulta com um [nutricionista](especialidade).
+    - Uma consulta com o [ortopedista](especialidade)
+    - Consulta com o [oftalmologista](especialidade)
+    - [Gastroenterologista](especialidade)
+    - [Otorrinolaringologista](especialidade)
+    - Preciso agendar uma consulta com um [oncologista](especialidade).
+
+- intent: agendamento_data_hora
+  examples: |
+    - Pode ser na próxim [terça](dia_semana), pela [manhã](periodo_consulta).
+    - Na quinta à tarde.
+    - Segunda, período da tarde.
+    - Quarta, manhã.
+    - Sexta, tarde
+    - No dia [10/05](data_hora) no período da manhã.
+    - No dia 27/10 pela manhã.
+    - 12/06 - manhã.
+    - 24/06, de manhã.
+
+- intent: agradecimento
+  examples: |
+    - Obrigado
+    - Valeu
+    - Valeu bot, você é demais
+    - Agradeço a ajuda.
+    - vlw
+    - Muito obrigado pela ajuda
+    - obg
+    - Você é top
+    - Grato
+
+- intent: finalizacao
+  examples: |
+    - Não, é só isso.
+    - Não
+    - Só isso mesmo.
+    - Somente isso.
+    - Não preciso de mais nada.
+    - Não, era apenas isso.
+    - Não, não há mais nada que eu precise.
+    - Não, por enquanto é só isso mesmo.
