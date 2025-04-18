@@ -4,7 +4,8 @@ intents:
   - saudacao
   - agendamento_consulta
   - agendamento_especialidade
-  - agendamento_data_hora
+  - agendamento_data
+  - agendamento_periodo
   - agradecimento
   - finalizacao
 entities:
@@ -13,6 +14,9 @@ entities:
   - data_hora
   - especialidade
 
+actions:
+  - action_validar_especialidade
+
 slots:
   especialidade_medico:
     type: text
@@ -20,7 +24,7 @@ slots:
     mappings:
     - type: from_entity
       entity: especialidade
-  periodo_consulta_agendada:
+  periodo_consulta_agenda:
     type: text
     influence_conversation: true
     mappings:
@@ -35,6 +39,13 @@ slots:
     - type: from_entity
       entity: dia_semana
 
+forms:
+  agendamento_form:
+    required_slots:
+      - especialidade_medico
+      - periodo_consulta_agenda
+      - data_hora_consulta
+
 responses:
   utter_saudacao:
   - text: "Olá! Bem-vino à clínica do dr. Bozer. Como posso ajudá-lo?"
@@ -42,12 +53,18 @@ responses:
   utter_agendamento_consulta:
   - text: "Claro! Para isso iremos encaminhar os seus dados à nossa central de atendimento, Favor me informe a especialidade desejada!"
 
-  utter_agendamento_especialidade:
-  - text: "Entendido. Qual a data e o período (manhã/tarde) que você prefere?"
-
-  utter_agendamento_data_hora:
-  - text: "Certo, iremos encaminhar esses dados para a nossa central {especialidade_medico} - {data_hora_consulta} - {periodo_consulta_agendada}. Logo mais eles entrarão em contato! Posso ajudá-lo com mais alguma coisa?"
+  utter_info_central:
+  - text: "Certo, iremos encaminhar esses dados para a nossa central {especialidade_medico} - {data_hora_consulta} - {periodo_consulta_agenda}. Logo mais eles entrarão em contato! Posso ajudá-lo com mais alguma coisa?"
   #- text: "Certo!"
+
+  utter_ask_agendamento_form_especialidade_medico:
+  - text: "Favor, me informar a especialidade desejada"
+
+  utter_ask_agendamento_form_periodo_consulta_agenda:
+  - text: "Qual a data e o período (manhã/tarde) que você prefere?"
+
+  utter_ask_agedamento_form_data_hora_consulta:
+  - text: "Qual data você gostaria de agendar a sua consulta?"
 
   utter_agradecimento:
   - text: "De nada, ficamos felizes em atendê-lo!"
@@ -55,11 +72,11 @@ responses:
   utter_finalizacao:
   - text: "Tenha um ótimo dia!"
 
-  utter_repetir_especialidade:
-  - text: Não consegui detectar a especialidade, favor reformular sua frase.
+  utter_reformular:
+  - text: Me desculpe, não entendi o que você disse. Você poderia reformular a sua frase?
 
-  utter_repetir_data_periodo:
-  - text: Não consegui detectar a data e o período, favor reformular sua frase.
+  utter_default:
+  - text: Desculpe, eu não entendi, você pode reformular a sua pergunta?
 
 session_config:
   session_expiration_time: 60

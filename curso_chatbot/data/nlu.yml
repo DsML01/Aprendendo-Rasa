@@ -66,7 +66,7 @@ nlu:
 
 - intent: agendamento_data_hora
   examples: |
-    - Pode ser na próxim [terça](dia_semana), pela [manhã](periodo_consulta).
+    - Pode ser na próxim [terça](dia_semana), pela [manhã].
     - Na quinta à tarde.
     - Segunda, período da tarde.
     - Quarta, manhã.
@@ -75,6 +75,30 @@ nlu:
     - No dia 27/10 pela manhã.
     - 12/06 - manhã.
     - 24/06, de manhã.
+
+- intent: agendamento_data
+  examples: |
+    - Pode ser na próxima [terça] (dia_semana)
+    - Na quinta-feira
+    - Segunda-feira
+    - Quarta-feira
+    - sexta
+    - No dia [10/05](data_hora)
+    - No dia 27/10
+    - 12/06
+    - 24/02
+
+- intent: agendamento_periodo
+  examples: |
+    - No período da [manhã](periodo_consulta)
+    - no período da tarde
+    - pela manhã
+    - de manhã
+    - à tarde
+    - tarde
+    - manhã
+    - quero à tarde
+    - quero de manhã
 
 - intent: agradecimento
   examples: |

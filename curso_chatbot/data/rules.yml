@@ -6,3 +6,8 @@ rules:
   steps:
   - intent: agradecimento
   - action: utter_agradecimento
+
+- rule: Reformular ultima frase
+  steps:
+  - intent: nlu_fallback
+  - action: utter_reformular
